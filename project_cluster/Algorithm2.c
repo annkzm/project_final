@@ -47,3 +47,4 @@ l_cleanup:
 	free(normalized_eig_vec);
 	exit(status);
 }
+

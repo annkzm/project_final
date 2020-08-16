@@ -17,22 +17,19 @@
 #include "B.h"
 #include "Algorithm2.h"
 
-/*    int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 	Status status = INVALID_STATUS_CODE;
 	int g[] = {0,1,2,3,4};
 	int g_size = 5;
 	spmat *A;
 	int M, *k;
 	int n;
-	int i;
-	int s[] = { 0,0,0,0,0 };*/ /* just moved here so it's in the start*/
 	/*status = generate_graph();*/
-	/*seed random*/
-	/*srand((unsigned int)time(0));
+	// seed random
+	srand((unsigned int)time(0));
 	status = extract_matrix_size(argc, argv, &n);
-	A = spmat_allocate_list(n); */ /*allocation check within the function*/
-
-/*	if (NULL == A) {
+	A = spmat_allocate_list(n); /*allocation check within the function*/
+	if (NULL == A) {
 		status = MALLOC_FAILED_CODE;
 		get_error_message(status);
 		goto l_cleanup;
@@ -47,14 +44,14 @@
 
 	printf("total number of vertices %d", A->n);
 	printf("k: ");
-	for (i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 		printf("%d, ", k[i]);
 	printf("\n");
 	
-
+	int s[] = { 0,0,0,0,0 };
 	algorithm2(A, k, M, g, g_size, s);
 	printf("s: ");
-	for (i = 0; i < g_size; i++)
+	for (int i = 0; i < g_size; i++)
 		printf("%d, ", s[i]);
 	printf("\n");
 
@@ -64,4 +61,3 @@
 l_cleanup:
 	exit(status);
 }
-*/

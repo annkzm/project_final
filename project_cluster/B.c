@@ -34,12 +34,12 @@ double f_i_g(const struct _spmat *A, const int *k, int M, const int *g, int g_si
 double B_gag_i_j(int i, int j, const struct _spmat *A, const int *k, const int *g, int g_size, int M) {
 	double first = 0.0;
 	double second = 0.0;
-	/*int g_i = 0;   ---- unused */
-	/* const int *g_pointer = g; ----- unused */
+	int g_i = 0;
+	const int *g_pointer = g;
 	node **rows = A->private;
 	node *current = rows[i];/*first element in the list[i]*/
 	
-	/* calculate first element*/
+	// calculate first element
 	while (current != NULL) {
 		if (current->col == j) {
 			first = 1.0 - ((double)k[i] * (double)k[j]) / (double)M;
@@ -82,7 +82,7 @@ double B_gag_L1_norm(const struct _spmat *A, const int *k, int M, const int *g, 
 	return max_row_sum;
 }
 
-/* helper function that multiplies Bgag with a given vector, and stores the result in res */
+// helper function that multiplies Bgag with a given vector, and stores the result in res
 void B_gag_vec_mult(const struct _spmat *A, const int *k, const int *g, int g_size, int M, double L1norm,
 					const double *v, double *res) {
 	int gi, gj;
@@ -98,7 +98,7 @@ void B_gag_vec_mult(const struct _spmat *A, const int *k, const int *g, int g_si
 			j = g[gj];
 			Bgagij = B_gag_i_j(i, j, A, k, g, g_size, M);
 
-			/* matrix shifting addition*/
+			// matrix shifting addition
 			if (i == j)
 				Bgagij += L1norm;
 
@@ -109,7 +109,7 @@ void B_gag_vec_mult(const struct _spmat *A, const int *k, const int *g, int g_si
 	}
 }
 
-/* int version of the helper function above*/
+// int version of the helper function above
 void B_gag_vec_mult_int(const struct _spmat *A, const int *k, const int *g, int g_size, int M, double L1norm,
 	const int *v, double *res) {
 	int gi, gj;
@@ -125,7 +125,7 @@ void B_gag_vec_mult_int(const struct _spmat *A, const int *k, const int *g, int 
 			j = g[gj];
 			Bgagij = B_gag_i_j(i, j, A, k, g, g_size, M);
 
-			/* matrix shifting addition*/
+			// matrix shifting addition
 			if (i == j)
 				Bgagij += L1norm;
 
@@ -141,9 +141,9 @@ void B_gag_vec_mult_int(const struct _spmat *A, const int *k, const int *g, int 
 Status power_iteration(const struct _spmat *A, const int *k, const int *g, int g_size, int M, double L1norm, double *res) {
 	Status status = INVALID_STATUS_CODE;
 	int i;
-	/*int is_res = 1; // if is_res==1 then the result of the multiplication is stored in res, otherwise in v*/
+	//int is_res = 1; // if is_res==1 then the result of the multiplication is stored in res, otherwise in v
 
-	/*generate a random normalized vector*/
+	//generate a random normalized vector
 	double *v = (double*)malloc(g_size * sizeof(double));
 	if (NULL == v) {
 		status = MALLOC_FAILED_CODE;

@@ -16,7 +16,7 @@
 
 int main(int argc, char *argv[]) {
 	Status status = INVALID_STATUS_CODE;
-	double M, *k;
+	int M, *k;
 	int n;
 	spmat *A ;
 	status = extract_matrix_size(argc, argv, &n);
@@ -26,13 +26,13 @@ int main(int argc, char *argv[]) {
 		get_error_message(status);
 		goto l_cleanup;
 	}
-	k = (double*)malloc(n * sizeof(double));
+	k = (int*)malloc(n * sizeof(double)); /* changed here to int */
 	if(NULL == k){
 		status = MALLOC_FAILED_CODE;
 		get_error_message(status);
 		goto l_cleanup;
 	}
-	status = graph_loading(argc, argv, &A, &k, &M);
+	status = graph_loading(argc, argv, A, &k, &M);
 	printf("total number of vertices %d,", A->n);
 	status = SUCCESS_STATUS_CODE;
 	return 0;

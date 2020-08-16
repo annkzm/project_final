@@ -1,5 +1,6 @@
 #include "Common.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 
 void get_error_message(Status result) {
@@ -50,4 +51,3 @@ void get_error_message(Status result) {
 	}
 
 }
-

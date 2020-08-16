@@ -1,6 +1,9 @@
+
 #include <math.h>
 #include "Common.h"
 #include "vector.h"
+
+
 
 void vec_normalize(double * v, int size)
 {

@@ -16,8 +16,35 @@
 #include "Utility.h"
 #include "B.h"
 #include "Algorithm2.h"
+#include "stack_impl.h"
 
 int main(int argc, char *argv[]) {
+	int *l;
+	int i;
+	int size;
+	int *vector;
+	l = (int*)malloc(4 * sizeof(int));
+	for(i=0;i<5;i++){
+		l[i]=i;
+	}
+	struct elem *top = NULL;
+	push( l,4, &top);
+	size = get_size_of_top(*top);
+	printf("sizeOfTop = %d",size );
+	vector = top(*top);
+	for(i=0;i<5;i++){
+			l[i]=1+i;
+		}
+
+
+
+
+
+
+
+
+
+
 	Status status = INVALID_STATUS_CODE;
 	int g[] = {0,1,2,3,4};
 	int g_size = 5;

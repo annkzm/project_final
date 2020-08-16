@@ -136,10 +136,3 @@ Status graph_loading(int argc, char** argv, struct _spmat *A, int *k, int *M) {
 l_cleanup:
 	exit(status);
 }
-
-
-
-
-
-
-

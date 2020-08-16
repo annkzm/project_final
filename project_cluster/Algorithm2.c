@@ -15,10 +15,10 @@ Status algorithm2(const struct _spmat *A, const int *k, int M, const int *g, int
 		goto l_cleanup;
 	}
 
-	// calculate eigenvector of maximal eigenvalue
+	/* calculate eigenvector of maximal eigenvalue*/
 	power_iteration(A, k, g, g_size, M, L1norm, normalized_eig_vec);
 
-	// get corresponding eigenvalue
+	/* get corresponding eigenvalue*/
 	power_iteration_eigval(A, k, g, g_size, M, L1norm, normalized_eig_vec, &eig_val);
 
 	if (!IS_POSITIVE(eig_val)) {
@@ -30,7 +30,7 @@ Status algorithm2(const struct _spmat *A, const int *k, int M, const int *g, int
 	for (i = 0; i < g_size; i++)
 		*(s + i) = 1 ? IS_POSITIVE(*(normalized_eig_vec + i)) : 0;
 
-	// we now use normalized_eig_vec to store the result of B_gag[g] * s;
+	/* we now use normalized_eig_vec to store the result of B_gag[g] * s;*/
 	B_gag_vec_mult_int(A, k, g, g_size, M, L1norm, s, normalized_eig_vec);
 	
 	if (!IS_POSITIVE(vec_dot_int(s, normalized_eig_vec, g_size))) {
@@ -47,4 +47,3 @@ l_cleanup:
 	free(normalized_eig_vec);
 	exit(status);
 }
-

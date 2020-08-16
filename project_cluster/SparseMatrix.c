@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include "SparseMatrix.h"
 #include <assert.h>
@@ -134,10 +133,3 @@ l_cleanup:
 	}
 	return sp;
 }
-
-
-
-
-
-
-
